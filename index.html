@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Armazém da Sra. Lourdes</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">Armazém da Sra. Lourdes</div>
+    <div class="cart-icon" onclick="toggleCarrinho()">
+      <i class="fas fa-shopping-cart"></i>
+      <span id="cartCount">0</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="catalogo">
+      <h2>Produtos</h2>
+      <div class="produtos-grid">
+        <!-- Exemplo de produto -->
+        <div class="produto">
+          <img src="img/produto.jpg" alt="Produto" />
+          <h3>Pão de queijo</h3>
+          <p>R$10</p>
+          <button onclick="adicionarAoCarrinho('Pão de queijo', 10)">Adicionar</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside id="carrinho" class="carrinho-fechado">
+    <h2>Seu Carrinho</h2>
+    <ul id="itensCarrinho"></ul>
+    <p>Total: R$<span id="total">0</span></p>
+    <button onclick="finalizarPedido()">Finalizar Pedido</button>
+  </aside>
+
+  <a href="https://wa.me/5543998306254" class="whatsapp-button" target="_blank">Fale conosco</a>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log("SW registrado", reg))
+        .catch(err => console.error("Erro SW", err));
+    }
+  </script>
+</body>
+</html>
